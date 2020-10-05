@@ -1,7 +1,7 @@
 #######################
 ### Configuration     #
 #######################
-text_editor="gedit"
+text_editor="nano"
 
 #########################################
 #####     General Shell aliases      ####
