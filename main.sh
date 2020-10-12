@@ -32,3 +32,4 @@ dir_prompt="\[\e[0;92m\]\w\[\e[m\]"
 git_prompt=" \[\e[0;91m\]$(parse_git_branch)\[\e[m\]"
 
 PS1="$host_prompt$user_prompt [$dir_prompt]$git_prompt $>"
+

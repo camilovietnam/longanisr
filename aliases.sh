@@ -150,6 +150,7 @@ alias editwallpaper='sudo $texteditor /usr/share/gnome-shell/theme/ubuntu.css'
 alias fstash='git stash show -p | git apply --3'
 alias gitclonedailyproblem='git clone https://github.com/camilovietnam/dailyproblem'
 alias gitclonedragondev='git clone https://github.com/camilovietnam/dragondev'
+alias gitcloneml='git clone https://github.com/camilovietnam/ml_stanford'
 alias heroky="heroku"
 alias mgo='sudo systemctl start mongod'
 alias newmysql='new_mysql'
@@ -157,3 +158,4 @@ alias pstash='git stash apply'
 alias reloadkeys='xbindkeys && killall -s1 xbindkeys && xbindkeys -f ~/.xbindkeysrc'
 alias remap='sudo $texteditor /usr/share/X11/xkb/symbols/pc'
 alias adobe='wine "/home/israel/.wine/drive_c/Program Files/Adobe/Adobe Digital Editions 4.5/DigitalEditions.exe"'
+
