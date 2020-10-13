@@ -1,6 +1,6 @@
-##################################
-### 	Useful methods		######
-##################################
+#################################
+###      Useful methods       ###
+#################################
 
 function show_error() {
 	if [[ -z $1 ]]
@@ -76,6 +76,11 @@ function album(){
 	echo "$GREEN$BOLD$number"
 }
 
+##################################
+##    Useful Docker methods     ##
+##      in a folder to PNG      ##
+##################################
+
 function docker_stop_and_remove() {
 	if [[ -z $1 ]]; then
 		show_error "Please provide a container name"
@@ -117,7 +122,6 @@ docker_build_and_run() {
     fi
 }
 
-## Stop all docker containers
 docker_stop_all_containers() {
 	clear
 	read -p "Stop all containers? [Y/N]" -n 1 -r
@@ -129,7 +133,6 @@ docker_stop_all_containers() {
 	fi
 }
 
-## Remove all docker containers
 docker_rem_all_containers() {
 	clear
 	read -p "Remove all containers? [Y/N]" -n 1 -r
@@ -147,7 +150,6 @@ docker_rem_all_containers() {
 
 }
 
-## Remove docker images by name
 docker_rem_image() {
 	clear
 	if [[ -z "$1" ]]
@@ -158,15 +160,28 @@ docker_rem_image() {
 	fi
 }
 
+#################################
+##    Parse git branch on      ##
+##     current directory       ##
+#################################
 function parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+#################################
+##    Convert all raw images   ##
+##      in a folder to PNG     ##
+#################################
 function raw2png() {
 	for filename in *.CR2 ; do 
 		dcraw -c -w "$filename" | pnmtopng > "$filename.png";
 	done   
 }
+
+#################################
+##    Run Checkstyle on        ##
+##       edited files          ##
+#################################
 
 function run_checkstyle() {
     # FILES=$(git diff --cached --name-only --diff-filter=ACMR HEAD | grep -E "\.php|\.js|\.css")
@@ -180,6 +195,11 @@ function run_checkstyle() {
     fi    
 }
 
+#################################
+##    Serve Laravel using      ##
+##     different locales       ##
+#################################
+
 function serve_jp() {
 	sed -i "s/APP_LOCALE=en/APP_LOCALE=jp/" .env
 	serve
@@ -189,3 +209,13 @@ function serve_en() {
 	sed -i "s/APP_LOCALE=jp/APP_LOCALE=en/" .env
 	serve
 }
+
+##################################
+##   Command not found for ZSH  ##
+##################################
+
+function command_not_found_handler() {
+    show_error "Command was not found: $1"
+    return 127
+}
+
