@@ -2,7 +2,7 @@
 ### Configuration     #
 #######################
 text_editor="nano"
-
+texteditor="nano"
 #########################################
 #####     General Shell aliases      ####
 #########################################
@@ -14,7 +14,7 @@ alias cd..='cd ..'
 alias eee='$text_editor $LONG_PATH/aliases.sh && . $LONG_PATH/aliases.sh'
 alias ll='ls -lF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -l'
 alias pid='ps aux | grep -v grep | grep'
 alias pls='sudo'
 alias rm='show_error "rm command is dangerous - use trash instead"'
@@ -34,8 +34,8 @@ alias eng='setxkbmap us'
 alias esp='setxkbmap es'
 alias egovernor='sudo $texteditor /etc/default/tlp'
 alias governor='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
-alias i3config='$texteditor ~/.config/i3/config'
-alias i3conf='$texteditor ~/.config/i3/config'
+alias i3config='sudo $texteditor ~/.config/i3/config'
+alias i3conf='sudo $texteditor ~/.config/i3/config'
 alias install='sudo apt-get install'
 alias mswap='xmodmap -e "pointer = 3 2 1"'
 alias off='shutdown -h now'

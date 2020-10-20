@@ -5,7 +5,7 @@
 
 if [ -n "$ZSH_VERSION" ]; then
    # We are in ZSH
-
+   lol='nada' # we need at least one line
 elif [ -n "$BASH_VERSION" ]; then
     # We are in BASH
    host_prompt="\[\e[0;93m\]★\[\e[m\]"
