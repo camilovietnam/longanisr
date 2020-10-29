@@ -87,7 +87,7 @@ function docker_run_bash() {
       return 1
    fi
 
-   docker run -it $1 bash
+   docker exec -it $1 bash
 }
 
 
