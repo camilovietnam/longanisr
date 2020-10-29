@@ -127,6 +127,7 @@ alias rundev='npm run dev'
 
 ### Docker
 alias dbr='docker_build_and_run'
+alias dbash='docker_run_bash'
 alias dimg='docker images'
 alias dr='docker run'
 alias dri='docker_rem_image'

@@ -6,7 +6,7 @@ function show_error() {
 	if [[ -z $1 ]]
 	then
 		$1 = 'Error'
-	fi 
+	fi
 
 	echo "$RED${BOLD}[✘] $1$RESET"
 }
@@ -15,9 +15,9 @@ function show_success() {
 	if [[ -z $1 ]]
 	then
 		$1 = 'Success'
-	fi 
+	fi
 
-	echo "$GREEN${BOLD}[✓] $1$RESET"	
+	echo "$GREEN${BOLD}[✓] $1$RESET"
 }
 
 function new_mysql() {
@@ -81,19 +81,30 @@ function album(){
 ##      in a folder to PNG      ##
 ##################################
 
-function docker_stop_and_remove() {
-	if [[ -z $1 ]]; then
-		show_error "Please provide a container name"
-		return 1
-	fi
+function docker_run_bash() {
+   if [[ -z $1 ]]; then
+      show_error "Please provide a container name"
+      return 1
+   fi
 
-	docker stop $1 && docker rm $1
+   docker run -it $1 bash
 }
 
-docker_build_and_run() {
-	clear
+
+function docker_stop_and_remove() {
+   if [[ -z $1 ]]; then
+      show_error "Please provide a container name"
+      return 1
+   fi
+
+   docker stop $1 && docker rm $1
+}
+
+function docker_build_and_run() {
+    clear
 
     # Fail if no container name was given
+
     if [[ -z $1 ]]
     then
     	show_error "You need to provide a container name."
@@ -108,11 +119,10 @@ docker_build_and_run() {
     	DIR=$2
     fi
 
-    
-    docker build -t $1 $DIR 
+    docker build -t $1 $DIR
 
     if [ $? -eq 0 ]
-    then 
+    then
     	show_success "Container was built!"
     	echo "${DIM}[✓] Running container...$RESET"
     	echo $RESET
@@ -122,18 +132,19 @@ docker_build_and_run() {
     fi
 }
 
-docker_stop_all_containers() {
-	clear
-	read -p "Stop all containers? [Y/N]" -n 1 -r
-	echo
-	if [[ $REPLY =~ ^[YyaA]$ ]]
-	then
-		CONTAINERS=$(docker ps -q)
-		[ ! -z "$CONTAINERS" ] && docker stop "$CONTAINERS" || echo "No containers running."
-	fi
+function docker_stop_all_containers() {
+   clear
+   read -p "Stop all containers? [Y/N]" -n 1 -r
+   echo
+
+   if [[ $REPLY =~ ^[YyaA]$ ]]
+   then
+      CONTAINERS=$(docker ps -q)
+      [ ! -z "$CONTAINERS" ] && docker stop "$CONTAINERS" || echo "No containers running."
+   fi
 }
 
-docker_rem_all_containers() {
+function docker_rem_all_containers() {
 	clear
 	read -p "Remove all containers? [Y/N]" -n 1 -r
 	echo
@@ -150,7 +161,7 @@ docker_rem_all_containers() {
 
 }
 
-docker_rem_image() {
+function docker_rem_image() {
 	clear
 	if [[ -z "$1" ]]
 	then
@@ -173,9 +184,9 @@ function parse_git_branch() {
 ##      in a folder to PNG     ##
 #################################
 function raw2png() {
-	for filename in *.CR2 ; do 
+	for filename in *.CR2 ; do
 		dcraw -c -w "$filename" | pnmtopng > "$filename.png";
-	done   
+	done
 }
 
 #################################
@@ -192,7 +203,7 @@ function run_checkstyle() {
     	echo "No files to check";
     else
     	phpcs --standard=psr2 --colors -p --report=full -n --no-cache $FILES
-    fi    
+    fi
 }
 
 #################################
@@ -219,3 +230,16 @@ function command_not_found_handler() {
     return 127
 }
 
+
+#########################################
+###   Make a new folder and go to it   ##
+#########################################
+
+function mkgo() {
+   if [[ -z $1 ]]; then
+	show_error "Please provide a folder name"
+	return 1;
+   fi;
+
+   mkdir $1 && cd $1 && show_success "You're now in folder $1."
+}
