@@ -1,8 +1,8 @@
 #######################
 ### Configuration     #
 #######################
-text_editor="nano"
-texteditor="nano"
+text_editor="sudo nano"
+texteditor="sudo nano"
 #########################################
 #####     General Shell aliases      ####
 #########################################
@@ -11,7 +11,7 @@ alias ~='cd ~'
 alias c='clear'
 alias cls='clear'
 alias cd..='cd ..'
-alias eee='$text_editor $LONG_PATH/aliases.sh && . $LONG_PATH/aliases.sh'
+alias eee='sudo nano $LONG_PATH/aliases.sh && . $LONG_PATH/aliases.sh'
 alias ll='ls -lF'
 alias la='ls -A'
 alias l='ls -l'
@@ -19,7 +19,7 @@ alias pid='ps aux | grep -v grep | grep'
 alias pls='sudo'
 alias rm='show_error "rm command is dangerous - use trash instead"'
 alias rrr='. $LONG_PATH/main.sh'
-alias sys='systemctl'
+alias sys='sudo systemctl'
 alias vol='alsamixer'
 alias x='exit'
 
@@ -32,10 +32,10 @@ alias editkeys='$text_editor ~/.xbindkeysrc'
 alias editgovernor='sudo $texteditor /etc/default/tlp'
 alias eng='setxkbmap us'
 alias esp='setxkbmap es'
-alias egovernor='sudo $texteditor /etc/default/tlp'
+alias egovernor='sudo nano /etc/default/tlp'
 alias governor='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
-alias i3config='sudo $texteditor ~/.config/i3/config'
-alias i3conf='sudo $texteditor ~/.config/i3/config'
+alias i3config='sudo nano ~/.config/i3/config'
+alias i3conf='sudo nano ~/.config/i3/config'
 alias install='sudo apt-get install'
 alias mswap='xmodmap -e "pointer = 3 2 1"'
 alias off='shutdown -h now'
@@ -128,6 +128,7 @@ alias rundev='npm run dev'
 ### Docker
 alias dbr='docker_build_and_run'
 alias dbash='docker_run_bash'
+alias dcom='docker-compose'
 alias dimg='docker images'
 alias dr='docker run'
 alias dri='docker_rem_image'
